@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Atualização de Pessoa</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+	<div class="container">
+		
+		<h2>Atualização de Pessoa</h2>
+		
+		<form action="#" th:action="@{/pessoa/atualizar/{idPessoa}(idPessoa=${pessoa.idPessoa})}" th:object="${pessoa}"method="post">
+			
+			<input type="hidden" name="idPessoa" th:value="${pessoa.idPessoa}">
+			<div class="form-group">
+				<label for="nome">Nome:</label>
+				<input type="text" th:field="*{pessoaNome}" th:value="${pessoa.pessoaNome}" class="form-control" id="nome">
+			</div>
+			
+			<div class="form-group">
+				<label for="dataNasc">Data de nascimento:</label>
+				<input type="date" th:field="*{dataNasc}" th:value="${pessoa.dataNasc}"
+					class="form-control" id="dataNasc">
+			</div>
+			
+			<div class="form-group">
+				<label for="sexo">Sexo:</label>
+				<input type="text" th:field="*{pessoaSexo}" th:value="${pessoa.pessoaSexo}" class="form-control" id="sexo">
+			</div>
+			
+			<div class="form-group">
+				<label for="nomeMae">Nome Mãe:</label>
+				<input type="text" th:field="*{pessoaMae}" th:value="${pessoa.pessoaMae}" class="form-control" id="nomeMae">
+			</div>
+			
+			<div class="form-group">
+				<label for="nomePai">Nome Pai:</label>
+				<input type="text" th:field="*{pessoaPai}" th:value="${pessoa.pessoaPai}" class="form-control" id="nomePai">
+			</div>
+			
+			
+			
+			<button type="submit" class="btn btn-primary">Atualizar Pessoa</button>
+			<a th:href="@{/pessoa/lista}" class="btn btn-danger">Listar Pessoas</a>
+		</form>
+	</div>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>

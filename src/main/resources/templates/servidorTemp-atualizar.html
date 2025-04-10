@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Atualização de Servidores</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+	<div class="container">
+		
+		<h2>Atualização de Servidores Temporários</h2>
+		
+		<form action="#" th:action="@{/servidorTemp/atualizar/{id}(id=${servidorTemp.id})}" th:object="${servidorTemp}"method="post">
+			
+			<input type="hidden" name="id" th:value="${servidorTemp.id}">
+			<div class="form-group">
+				<label for="nome">Nome:</label>
+				<input type="text" th:field="*{pessoa}" th:value="${servidorTemp.pessoa}" class="form-control" id="nome">
+			</div>
+			
+			<div class="form-group">
+				<label for="servidorDtAdmissao">Data Admissão:</label>
+				<input type="date" th:field="*{servidorDtAdmissao}" th:value="${servidorTemp.servidorDtAdmissao}"
+					class="form-control" id="servidorDtAdmissao">
+			</div>
+			
+			<div class="form-group">
+				<label for="servidorDtDemissao">Data Remoção:</label>
+				<input type="date" th:field="*{servidorDtDemissao}" th:value="${servidorTemp.servidorDtDemissao}"
+					class="form-control" id="servidorDtDemissao">
+			</div>
+			
+			<button type="submit" class="btn btn-primary">Atualizar Servidor</button>
+			<a th:href="@{/servidorTemp/lista}" class="btn btn-danger">Listar Servidores</a>
+		</form>
+	</div>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>

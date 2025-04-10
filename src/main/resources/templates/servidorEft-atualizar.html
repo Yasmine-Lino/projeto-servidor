@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Atualização de Servidor Efetivo</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+	<div class="container">
+		
+		<h2>Atualização de Servidor Efetivo</h2>
+		
+		<form action="#" th:action="@{/servidorEft/atualizar/{id}(id=${servidorEft.id})}" th:object="${servidorEft}"method="post">
+			
+			<input type="hidden" name="id" th:value="${servidorEft.id}">
+			<div class="form-group">
+				<label for="nome">Nome:</label>
+				<input type="text" th:field="*{pessoa}" th:value="${servidorEft.pessoa}" class="form-control" id="nome">
+			</div>
+			
+			<div class="form-group">
+				<label for="matricula">Matrícula:</label>
+				<input type="text" th:field="*{servidorEfMatricula}" th:value="${servidorEft.servidorEfMatricula}" class="form-control" id="matricula">
+			</div>
+				
+			
+			<button type="submit" class="btn btn-primary">Atualizar Servidor</button>
+			<a th:href="@{/servidorEft/lista}" class="btn btn-danger">Listar Servidores</a>
+		</form>
+	</div>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>

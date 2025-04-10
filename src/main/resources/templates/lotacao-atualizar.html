@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Atualização de Lotação</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+	<div class="container">
+		
+		<h2>Atualização de Lotação</h2>
+		
+		<form action="#" th:action="@{/lotacao/atualizar/{idLotacao}(idLotacao=${lotacao.idLotacao})}" th:object="${lotacao}"method="post">
+			
+			<input type="hidden" name="idLotacao" th:value="${lotacao.idLotacao}">
+			<div class="form-group">
+				<label for="nome">Nome:</label>
+				<input type="text" th:field="*{pessoa}" th:value="${lotacao.pessoa}" class="form-control" id="nome">
+			</div>
+			
+			<div class="form-group">
+				<label for="unidade">Unidade:</label>
+				<input type="text" th:field="*{unidade}" th:value="${lotacao.unidade}" class="form-control" id="unidade">
+			</div>
+			
+			<div class="form-group">
+				<label for="lotDataLotacao">Data Inclusão:</label>
+				<input type="date" th:field="*{lotDataLotacao}" th:value="${lotacao.lotDataLotacao}"
+					class="form-control" id="lotDataLotacao">
+			</div>
+			
+			<div class="form-group">
+				<label for="lotDataRemocao">Data Remoção:</label>
+				<input type="date" th:field="*{lotDataRemocao}" th:value="${lotacao.lotDataRemocao}"
+					class="form-control" id="lotDataRemocao">
+			</div>
+			
+			<div class="form-group">
+				<label for="portaria">Portaria:</label>
+				<input type="text" th:field="*{lotPortaria}" th:value="${lotacao.lotPortaria}" class="form-control" id="portaria">
+			</div>
+		
+			
+			<button type="submit" class="btn btn-primary">Atualizar Lotação</button>
+			<a th:href="@{/lotacao/lista}" class="btn btn-danger">Listar Lotações</a>
+		</form>
+	</div>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>

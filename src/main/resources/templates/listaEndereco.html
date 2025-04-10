@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Endereços cadastrados</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+
+	<div class="container">
+
+		<h2>Listagem de Endereços</h2>
+		<div class="alert alert-success alert-dismissible" role="alert" th:if="${!#strings.isEmpty(mensagem1)}">
+			<button type="button" class="close" data-dismiss="alert">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			<span th:text="${mensagem1}"></span>
+		</div>
+		<table class="table">
+			
+			<thead>
+				<tr>
+					<th>Tipo Logradouro</th>
+					<th>Logradouro</th>
+					<th>Número</th>
+					<th>Bairro</th>
+					<th>Cidade</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="endereco : ${enderecos}">
+					<td th:text="${endereco.enderecoTpLogradouro}"></td>
+					<td th:text="${endereco.enderecoLogradouro}"></td>
+					<td th:text="${endereco.enderecoNumero}"></td>
+					<td th:text="${endereco.enderecoBairro}"></td>
+					<td th:text="${endereco.cidade}"></td>
+					
+					<td>
+						<a th:href="@{/endereco/atualizar/{id}(id=${endereco.idEndereço})}"
+							class="btn btn-primary">Editar</a>
+						<a th:href="@{/endereco/apagar/{id}(id=${endereco.idEndereco})}" class="btn btn-danger"
+							onclick="return confirm('Tem certeza que deseja excluir esse endereço ?')">Excluir</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<a th:href="@{/endereco}" class="btn btn-primary">Novo Cadastro</a>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>

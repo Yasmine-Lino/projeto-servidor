@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Servidores cadastrados</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+
+	<div class="container">
+
+		<h2>Listagem de Servidores Efetivos</h2>
+		<div class="alert alert-success alert-dismissible" role="alert" th:if="${!#strings.isEmpty(mensagem1)}">
+			<button type="button" class="close" data-dismiss="alert">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			<span th:text="${mensagem1}"></span>
+		</div>
+		<table class="table">
+			
+			<thead>
+				<tr>
+					<th>Nome</th>
+					<th>Matrícula</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="servidorEft : ${servidorEftLista}">
+					<td th:text="${servidorEft.pessoa}"></td>
+					<td th:text="${servidorEft.servidorEfMatricula}"></td>
+					
+					<td>
+						<a th:href="@{/servidorEft/atualizar/{id}(id=${servidorEft.id})}"
+							class="btn btn-primary">Editar</a>
+						<a th:href="@{/servidorEft/apagar/{id}(id=${servidorEft.id})}" class="btn btn-danger"
+							onclick="return confirm('Tem certeza que deseja excluir esse Servidor ?')">Excluir</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<a th:href="@{/servidorEft}" class="btn btn-primary">Novo Cadastro</a>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>

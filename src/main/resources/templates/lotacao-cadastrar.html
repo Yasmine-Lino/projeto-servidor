@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">	
+<head>
+    <title>Cadastro Lotações</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+		<div>
+			<nav class="navbar navbar-light" style="background-color: #81DAD5;">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a>Projeto Servidor</a>
+					</li>
+				</ul>
+				<span class="navbar-text">
+      				Projeto Servidor
+    		</span>
+    		
+			</nav>
+		</div>
+		
+		
+        <h2>Cadastro de Lotações</h2>
+        
+        
+        <form action="#" th:action="@{/lotacao}" th:object="${lotacao}" method="post">
+			
+
+			
+			<div class="alert alert-success alert-dismissible" role= "alert" th:if="${!#strings.isEmpty(mensagem)}">
+        		<button type="button" class="close" data-dismiss="alert" ></button>
+					<span th:text="${mensagem}">Salvo com sucesso!</span>
+			</div>
+			
+            <div class="form-group">
+                <label for="nome">Nome:</label>
+                <input type="text" th:field="*{pessoa}" class="form-control" id="nome">
+            </div>
+            
+            <div class="form-group">
+                <label for="unidade">Unidade:</label>
+                <input type="text" th:field="*{unidade}" class="form-control" id="unidade">
+            </div>
+            
+            <div class="form-group">
+                <label for="lotDataLotacao">Data Inclusão:</label>
+                <input type="date" th:field="*{lotDataLotacao}" class="form-control" id="lotDataLotacao">
+            </div>
+            
+             <div class="form-group">
+                <label for="lotDataRemocao">Data Remoção:</label>
+                <input type="date" th:field="*{lotDataRemocao}" class="form-control" id="lotDataRemocao">
+            </div>
+            
+             <div class="form-group">
+                <label for="lotPortaria">Portaria:</label>
+                <input type="text" th:field="*{lotPortaria}" class="form-control" id="lotPortaria">
+            </div>
+            
+         
+  
+           
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </form>
+    </div>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Atualização de Unidade</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+	<div class="container">
+		
+		<h2>Atualização de Unidade</h2>
+		
+		<form action="#" th:action="@{/unidade/atualizar/{idUnidade}(idUnidade=${unidade.idUnidade})}" th:object="${unidade}"method="post">
+			
+			<input type="hidden" name="idUnidade" th:value="${unidade.idUnidade}">
+			<div class="form-group">
+				<label for="nome">Nome:</label>
+				<input type="text" th:field="*{unidNome}" th:value="${unidade.unidNome}" class="form-control" id="nome">
+			</div>
+			
+			<div class="form-group">
+				<label for="sigla">Sigla:</label>
+				<input type="text" th:field="*{unidSigla}" th:value="${unidade.unidSigla}" class="form-control" id="sigla">
+			</div>
+						
+			
+			<button type="submit" class="btn btn-primary">Atualizar Unidade</button>
+			<a th:href="@{/unidade/lista}" class="btn btn-danger">Listar Unidades</a>
+		</form>
+	</div>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>

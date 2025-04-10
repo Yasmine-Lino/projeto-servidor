@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Servidores cadastrados</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+
+	<div class="container">
+
+		<h2>Listagem de Servidores Temporários</h2>
+		<div class="alert alert-success alert-dismissible" role="alert" th:if="${!#strings.isEmpty(mensagem1)}">
+			<button type="button" class="close" data-dismiss="alert">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			<span th:text="${mensagem1}"></span>
+		</div>
+		<table class="table">
+			
+			<thead>
+				<tr>
+					<th>Nome</th>
+					<th>Data Admissão</th>
+					<th>Data Remoção</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="servidorTemp : ${servidorTempLista}">
+					<td th:text="${servidorTemp.pessoa}"></td>
+					<td th:text="${servidorTemp.servidorDtAdmissao}"></td>
+					<td th:text="${servidorTemp.servidorDtDemissao}"></td>
+					
+					<td>
+						<a th:href="@{/servidorTemp/atualizar/{id}(id=${servidorTemp.id})}"
+							class="btn btn-primary">Editar</a>
+						<a th:href="@{/servidorTemp/apagar/{id}(id=${servidorTemp.id})}" class="btn btn-danger"
+							onclick="return confirm('Tem certeza que deseja excluir esse servidor ?')">Excluir</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<a th:href="@{/servidorTemp}" class="btn btn-primary">Novo Cadastro</a>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Atualização de Endereço</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+	<div class="container">
+		
+		<h2>Atualização de Endereço</h2>
+		
+		<form action="#" th:action="@{/endereco/atualizar/{enderecoId}(enderecoId=${endereco.enderecoId})}" th:object="${endereco}"method="post">
+			
+			<input type="hidden" name="enderecoId" th:value="${endereco.enderecoId}">
+			<div class="form-group">
+				<label for="tipo">Tipo Logradouro:</label>
+				<input type="text" th:field="*{enderecoTpLogradouro}" th:value="${endereco.enderecoTpLogradouro}" class="form-control" id="tipo">
+			</div>
+			
+			<div class="form-group">
+				<label for="logradouro">Logradouro:</label>
+				<input type="text" th:field="*{enderecoLogradouro}" th:value="${endereco.enderecoLogradouro}" class="form-control" id="logradouro">
+			</div>
+			
+			<div class="form-group">
+				<label for="numero">Número:</label>
+				<input type="number" th:field="*{enderecoNumero}" th:value="${endereco.enderecoNumero}" class="form-control" id="numero">
+			</div>
+			
+			<div class="form-group">
+				<label for="bairro">Bairro:</label>
+				<input type="text" th:field="*{enderecoBairro}" th:value="${endereco.enderecoBairro}" class="form-control" id="bairro">
+			</div>
+			
+			<div class="form-group">
+				<label for="cidade">Cidade:</label>
+				<input type="text" th:field="*{cidade}" th:value="${endereco.cidade}" class="form-control" id="cidade">
+			</div>
+			
+			
+			<button type="submit" class="btn btn-primary">Atualizar Endereço</button>
+			<a th:href="@{/endereco/lista}" class="btn btn-danger">Listar Endereços</a>
+		</form>
+	</div>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>
